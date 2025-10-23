@@ -100,6 +100,7 @@ class _CompanyRepository extends BaseRepository
         parameters: values.values,
       );
     }
+
     await db.billingAddresses.updateMany([
       for (final r in requests)
         if (r.addresses case final addresses?)

@@ -127,6 +127,7 @@ class _AccountRepository extends BaseRepository
         parameters: values.values,
       );
     }
+
     await db.billingAddresses.updateMany([
       for (final r in requests)
         if (r.billingAddress case final billingAddress?)

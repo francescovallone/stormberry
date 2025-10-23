@@ -5,6 +5,24 @@
 
 import 'package:stormberry/migrate.dart';
 
+import 'package:stormberry/stormberry.dart';
+import 'dart:core' as core;
+import 'models/invoice.dart';
+import 'models/party.dart';
+import 'models/address.dart';
+import 'models/account.dart';
+import 'models/company.dart';
+
+extension AllRepositories on Session {
+  core.Map<core.Type, ModelRepository> get allRepositories => {
+    InvoiceRepository: invoices,
+    PartyRepository: parties,
+    BillingAddressRepository: billingAddresses,
+    AccountRepository: accounts,
+    CompanyRepository: companies,
+  };
+}
+
 final DatabaseSchema schema = DatabaseSchema.fromMap({
   "invoices": {
     "columns": {

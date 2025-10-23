@@ -23,7 +23,8 @@ Future<void> main() async {
 
   await db.companies.deleteOne('abc');
   await db.companies.insertOne(CompanyInsertRequest(id: 'abc', name: 'Minga', addresses: []));
-
+  final repo = db.allRepositories[PartyRepository]!;
+  print(repo is PartyRepository);
   await db.accounts.deleteMany([0, 1, 2]);
 
   var accountId = await db.accounts.insertOne(

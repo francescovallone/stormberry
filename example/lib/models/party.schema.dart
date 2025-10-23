@@ -93,6 +93,7 @@ class _PartyRepository extends BaseRepository
         parameters: values.values,
       );
     }
+
     await _updateGuests([
       for (final r in requests)
         if (r.guests case final guests?) (r.id, guests),
