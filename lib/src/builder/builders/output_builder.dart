@@ -27,6 +27,7 @@ abstract class OutputBuilder implements Builder {
       var asset = state.getForAsset(buildStep.inputId);
 
       if (asset != null && asset.tables.isNotEmpty) {
+        print('Building schema for ${buildStep.inputId.path}');
         var output = buildTarget(buildStep, asset);
         if (ext == 'dart') {
           var formatter = DartFormatter(languageVersion: DartFormatter.latestLanguageVersion);

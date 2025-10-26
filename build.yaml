@@ -5,7 +5,7 @@ builders:
     build_extensions: { ".dart": ["___"] }
     auto_apply: dependents
     build_to: cache
-    runs_before: [":schema", ":runner"]
+    runs_before: [":schema", ":session", ":runner"]
   schema:
     import: "package:stormberry/builder.dart"
     builder_factories: [ "buildSchema" ]
@@ -13,6 +13,12 @@ builders:
     auto_apply: dependents
     build_to: source
     runs_before: ["dart_mappable_builder", "freezed", "json_serializable"]
+  session:
+    import: "package:stormberry/builder.dart"
+    builder_factories: [ "buildSessionSchema" ]
+    build_extensions: { "$lib$": [ "session.schema.dart" ] }
+    auto_apply: dependents # Needs to be enabled manually
+    build_to: source
   runner:
     import: "package:stormberry/builder.dart"
     builder_factories: [ "buildRunner" ]
